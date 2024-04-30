@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { CommonController } from "@src/controller/common-controller";
+import { CommonController } from "@src/controllers/common-controller";
 
 class CommonRoutes {
   private router: Router;
