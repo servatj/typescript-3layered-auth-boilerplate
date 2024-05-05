@@ -13,6 +13,7 @@
     "paths": {
       "@src/*": ["src/*"]
     },
+    "types": ["vitest/globals"]
   },
   "exclude": ["node_modules", "dist"]
 }

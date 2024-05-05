@@ -3,20 +3,33 @@
   "version": "1.0.0",
   "description": "A TypeScript project with Express",
   "main": "dist/index.js",
+  "engines": {
+    "node": ">=20.x",
+    "npm": ">=10.x"
+  },
+  "keywords": [
+    "typescript",
+    "express",
+    "template"
+  ],
   "scripts": {
     "start": "node dist/index.js",
     "dev": "nodemon src/index.ts",
-    "test": "rimraf coverage .nyc_output && vitest run --coverage --config vitest.config.ts",
     "test:performance": "k6 run tests/performance/get-health.js",
+    "test": "rimraf coverage .nyc_output && concurrently 'npm:test:unit' 'npm:test:e2e'",
+    "test:unit": "vitest run --config vitest.config.unit.ts",
+    "test:e2e": "vitest run --coverage --config ./vitest.config.e2e.ts",
     "build": "npm run validate-typescript && npm run build:clean && npm run generate-dist",
     "build:clean": "rimraf dist; exit 0",
     "prepare": "husky",
     "lint": "eslint . --ext .js,.ts",
     "lint:fix": "npm run lint -- --fix",
+    "calculate-global-test-coverage": "ts-node scripts/calculate-global-test-coverage.ts",
     "validate-typescript": "tsc -p tsconfig.prod.json --noEmit",
     "generate-dist": "swc ./src -d dist --strip-leading-paths"
   },
   "dependencies": {
+    "@vitest/coverage-v8": "^1.6.0",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.5",
     "express": "^4.17.1",
@@ -44,7 +57,8 @@
     "@types/supertest": "^6.0.2",
     "@typescript-eslint/eslint-plugin": "^7.7.1",
     "@typescript-eslint/parser": "^7.7.1",
-    "@vitest/coverage-istanbul": "^1.5.2",
+    "@vitest/coverage-istanbul": "^1.3.1",
+    "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-node": "^11.1.0",
@@ -60,12 +74,11 @@
     "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
     "supertest": "^6.3.4",
-    "ts-jest": "^26.5.4",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^4.9.5",
+    "typescript": "^5.4.5",
     "unplugin-swc": "^1.4.5",
-    "vite": "^5.2.10",
-    "vitest": "^1.5.2"
+    "vite": "^5.2.11",
+    "vitest": "^1.3.1"
   }
 }

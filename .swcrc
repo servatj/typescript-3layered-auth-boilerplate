@@ -9,10 +9,7 @@
     },
     "baseUrl": "./",
     "paths": {
-      "@src/*": ["src/*"],
-      "@core/*": ["src/core/*"],
-      "@contexts/*": ["src/contexts/*"],
-      "@shared/*": ["src/shared/*"]
+      "@src/*": ["src/*"]
     },
     "target": "es2022"
   },
