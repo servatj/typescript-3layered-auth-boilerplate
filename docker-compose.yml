@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  my-service:
+  auth-service:
     container_name: my-service
     build:
       target: production
@@ -33,3 +33,28 @@ services:
       K6_WEB_DASHBOARD_PERIOD: "1s"
       K6_WEB_DASHBOARD_OPEN: "true"
     command: ["run", "--out", "web-dashboard", "/tests/performance/contexts/users/get-users.js"]
+
+  mongo:
+    image: mongo:4.4
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    volumes:
+      - ./data/db:/data/db
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: root
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: admin
+    depends_on:
+      - mongo

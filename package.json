@@ -17,10 +17,14 @@
     "generate-dist": "swc ./src -d dist --strip-leading-paths"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.5",
     "express": "^4.17.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.5.0",
     "winston": "^3.13.0",
-    "winston-transport": "^4.7.0"
+    "winston-transport": "^4.7.0",
+    "zod": "^3.23.6"
   },
   "optionalDependencies": {
     "fsevents": "^2.3.2"
@@ -31,9 +35,11 @@
     "@commitlint/types": "^19.0.3",
     "@swc/cli": "^0.3.12",
     "@swc/core": "^1.5.1",
+    "@types/bcryptjs": "^2.4.6",
     "@types/express": "^4.17.21",
     "@types/fs-extra": "^11.0.4",
     "@types/jest": "^26.0.15",
+    "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.12.7",
     "@types/supertest": "^6.0.2",
     "@typescript-eslint/eslint-plugin": "^7.7.1",
