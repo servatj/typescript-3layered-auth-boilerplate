@@ -1,6 +1,6 @@
 import { Collection, Db } from "mongodb";
 
-import { User } from "@src/entities/user-entity";
+import { User } from "@src/models/user-model";
 
 import { IUserRepository } from "./user-repository-interface";
 

@@ -1,4 +1,4 @@
-import { User } from "../entities/user-entity";
+import { User } from "../models/user-model";
 
 export class UserService {
   async createUser(user: User): Promise<User> {

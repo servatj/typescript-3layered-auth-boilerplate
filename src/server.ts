@@ -7,6 +7,7 @@ import express, { Express } from "express";
 import { config } from "@src/config/config";
 
 import errorMiddleware from "./middleware/error-middleware";
+import { authRoutes } from "./routes/auth-routes";
 import { commonRoutes } from "./routes/common-routes";
 
 export class Server {
@@ -22,6 +23,7 @@ export class Server {
   async start(): Promise<void> {
     this.app.use(express.json());
     this.app.use(commonRoutes.getRouter());
+    this.app.use(authRoutes.getRouter());
     this.app.use(errorMiddleware);
 
     this.httpServer = this.app.listen(this.port, () => {

@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
-import { User } from "@src/entities/user-entity";
-import { userCreateDTO, userUpdateDTO } from "@src/schema/user-schema";
+import { User } from "@src/models/user-model";
+import { userCreateDTO, userUpdateDTO } from "@src/models/user-model";
 import { UserService } from "@src/services/user-service";
 
 export class UserController {

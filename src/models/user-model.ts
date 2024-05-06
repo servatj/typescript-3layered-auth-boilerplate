@@ -1,6 +1,10 @@
-// import { zod } from "zod";
-
-import { User } from "@src/entities/user-entity";
+export type User = {
+  _id?: string;
+  id: number;
+  name: string;
+  email: string;
+  password: string;
+};
 
 export const userCreateDTO = (user: User) => {
   return {
@@ -27,10 +31,3 @@ export const userDTO = (user: User) => {
     email: user.email,
   };
 };
-
-// export const userSchema = zod.object({
-//   id: zod.number(),
-//   name: zod.string(),
-//   email: zod.string().email(),
-//   password: zod.string(),
-// });

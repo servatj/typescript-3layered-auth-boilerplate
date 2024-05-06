@@ -24,4 +24,4 @@ class AuthRoutes {
   }
 }
 
-export const commonRoutes = new AuthRoutes();
+export const authRoutes = new AuthRoutes();
