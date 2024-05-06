@@ -1,7 +1,7 @@
 {
   "name": "typescript-express-project",
   "version": "1.0.0",
-  "description": "A TypeScript project with Express",
+  "description": "A 3 layered TypeScript project with Express",
   "main": "dist/index.js",
   "engines": {
     "node": ">=20.x",

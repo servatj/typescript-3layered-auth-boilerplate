@@ -2,7 +2,7 @@
   <a href="https://expressjs.com/" target="blank"><img src="docs/images/boilerplate.png" alt="Express Logo" width="512" /></a>
 </p>
 
-<h1 align="center">⭐ Express Typescript basic boilerplate ⭐</h1>
+<h1 align="center">⭐ Express Typescript 3 layered boilerplate ⭐</h1>
 
 <p align="center">
   Very basic NodeJS using Express and Typescript template, especially focused on providing a good starting point with all the tooling neede as code quality, bundle, lint, test etc... 🚀
