@@ -1,7 +1,5 @@
 import { NextFunction, Request, Response } from "express";
 
-import { userSchema } from "@src/validators/user-schema";
-
 export class AuthController {
   async register(
     req: Request,
@@ -9,8 +7,8 @@ export class AuthController {
     next: NextFunction,
   ): Promise<void> {
     try {
-      const validateUser = userSchema.parse(req.body);
-      logger.info(validateUser);
+      // const validateUser = userSchema.parse(req.body);
+      // logger.info(validateUser);
       res.status(200).json({ message: "User registered successfully" });
     } catch (error) {
       next(error);

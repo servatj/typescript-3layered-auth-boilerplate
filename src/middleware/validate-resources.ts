@@ -1,20 +1,20 @@
 import { NextFunction, Request, Response } from "express";
 import { AnyZodObject } from "zod";
+import { z } from "zod";
 
-export const validate =
+export const validateResource =
   (schema: AnyZodObject) =>
-  (req: Request, res: Response, Next: NextFunction) => {
+  (req: Request, res: Response, next: NextFunction) => {
     try {
+      console.log(req.body);
       schema.parse({
         body: req.body,
         query: req.query,
         params: req.params,
       });
     } catch (error) {
-      if (error instanceof Error) {
-        res.status(400).send(error.message);
-      }
+      logger.error("validation error middleware");
+      logger.info(error instanceof z.ZodError);
+      next(error);
     }
-
-    return Next();
   };
