@@ -1,27 +1,6 @@
 {
-	"watch": [
-		"src"
-	],
-	"ext": "ts,json",
-	"ignore": [
-		"src/**/*.spec.ts"
-	],
-	"exec": "ts-node --files --require tsconfig-paths/register src/index.ts",
-	"Resources": {
-		"Layer": {
-			"Type": "AWS::Serverless::LayerVersion",
-			"Properties": {
-				"Description": {
-					"Fn::Sub": [
-						"Stack ${AWS::StackName} Layer ${ResourceName}",
-						{
-							"ResourceName": "Layer"
-						}
-					]
-				},
-				"ContentUri": "src/Layer",
-				"RetentionPolicy": "Retain"
-			}
-		}
-	}
+  "watch": ["src"],
+  "ext": "ts,json",
+  "ignore": ["src/**/*.spec.ts"],
+  "exec": "tsnd -r tsconfig-paths/register --inspect=0.0.0.0:9229 --respawn src/index.ts"
 }
