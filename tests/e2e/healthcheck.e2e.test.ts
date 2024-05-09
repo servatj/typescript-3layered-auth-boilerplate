@@ -3,7 +3,7 @@ import request from "supertest";
 
 import app from "@src/app";
 
-describe.only("auth", () => {
+describe("auth", () => {
   beforeAll(async () => {
     nock.disableNetConnect();
     nock.enableNetConnect("127.0.0.1");
