@@ -2,13 +2,10 @@ import "./logger";
 
 import http from "node:http";
 
-import express, { Express } from "express";
+import { Express } from "express";
 
+import app from "@src/app";
 import { config } from "@src/config/config";
-
-import errorMiddleware from "./middleware/error-middleware";
-import { authRoutes } from "./routes/auth-routes";
-import { commonRoutes } from "./routes/common-routes";
 
 export class Server {
   private readonly app: Express;
@@ -16,16 +13,11 @@ export class Server {
   private httpServer?: http.Server;
 
   constructor() {
-    this.app = express();
+    this.app = app;
     this.port = Number(config.server.port);
   }
 
   async start(): Promise<void> {
-    this.app.use(express.json());
-    this.app.use(commonRoutes.getRouter());
-    this.app.use(authRoutes.getRouter());
-    this.app.use(errorMiddleware);
-
     this.httpServer = this.app.listen(this.port, () => {
       logger.info(`Server running on http://localhost:${this.port}`);
     });

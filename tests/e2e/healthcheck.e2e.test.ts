@@ -1,14 +1,10 @@
 import * as nock from "nock";
 import request from "supertest";
 
-import { Server } from "@src/server";
+import app from "@src/app";
 
-describe("Health", () => {
-  let server: Server;
-
+describe.only("auth", () => {
   beforeAll(async () => {
-    server = new Server();
-    await server.start();
     nock.disableNetConnect();
     nock.enableNetConnect("127.0.0.1");
   });
@@ -18,12 +14,11 @@ describe("Health", () => {
   });
 
   afterAll(async () => {
-    await server.stop();
     nock.enableNetConnect();
   });
 
   it("/GET health", async () => {
-    const response = await request(server.getHttpServer()!).get("/health");
+    const response = await request(app).get("/health");
     expect(response.status).toBe(200);
   });
 });
