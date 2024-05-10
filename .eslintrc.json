@@ -31,7 +31,9 @@
     "no-console": "warn",
     "node/no-missing-import": "off",
     "@typescript-eslint/require-await": "off",
+    "@typescript-eslint/no-unsafe-call": "off",
     "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
     "node/no-unsupported-features/es-syntax": [
       "error",
       { "ignores": ["modules"] }

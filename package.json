@@ -1,5 +1,5 @@
 {
-  "name": "typescript-express-project",
+  "name": "typescript-3layered-auth-boilerplate",
   "version": "1.0.0",
   "description": "A 3 layered TypeScript project with Express",
   "main": "dist/index.js",
@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@vitest/coverage-v8": "^1.6.0",
+    "awilix": "^10.0.2",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.5",
     "express": "^4.17.1",

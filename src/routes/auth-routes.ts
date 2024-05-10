@@ -1,11 +1,12 @@
 import { Router } from "express";
 
+import { authService } from "@src/container";
 import { AuthController } from "@src/controllers/auth-controller";
 
 class AuthRoutes {
   private router: Router;
 
-  private controller: AuthController = new AuthController();
+  private controller: AuthController = new AuthController(authService);
 
   constructor() {
     this.router = Router();

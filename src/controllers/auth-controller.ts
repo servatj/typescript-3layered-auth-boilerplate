@@ -1,8 +1,15 @@
 import { NextFunction, Request, Response } from "express";
 
+import AuthService from "@src/services/auth-service";
 import { userSchema } from "@src/validators/user-schema";
 
 export class AuthController {
+  authService: AuthService;
+
+  constructor(authService: AuthService) {
+    this.authService = authService;
+  }
+
   async register(
     req: Request,
     res: Response,
