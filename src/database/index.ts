@@ -1,5 +1,5 @@
 // src/database/mongoClient.ts
-import { Db, MongoClient } from "mongodb";
+import { Db, MongoClient, MongoClientOptions, ServerApiVersion } from "mongodb";
 
 const uri: string = process.env.MONGO_URI || "mongodb://localhost:27017";
 const dbName: string = process.env.MONGO_DB_NAME || "userDB";
@@ -7,8 +7,15 @@ const dbName: string = process.env.MONGO_DB_NAME || "userDB";
 let db: Db;
 
 export const connectDB = async (): Promise<Db> => {
+  const options: MongoClientOptions = {
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    },
+  };
   try {
-    const client: MongoClient = new MongoClient(uri);
+    const client: MongoClient = new MongoClient(uri, options);
     await client.connect();
     db = client.db(dbName);
     logger.info("Connected to MongoDB");
@@ -20,9 +27,12 @@ export const connectDB = async (): Promise<Db> => {
   }
 };
 
-export const getDb = (): Db => {
-  if (!db) {
-    throw new Error("No database found");
+export const getDb = async (): Promise<Db> => {
+  if (db) {
+    return db;
+  } else {
+    db = await connectDB();
+    logger.info("Using existing connection");
+    return db;
   }
-  return db;
 };
