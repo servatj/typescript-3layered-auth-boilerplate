@@ -6,9 +6,12 @@ import { IUserRepository } from "./user-repository-interface";
 
 export class UserRepository implements IUserRepository {
   users: Collection<User>;
+  dbClient: Db;
 
-  constructor(db: Db) {
-    this.users = db.collection<User>("users");
+  constructor({ dbClient }: { dbClient: Db }) {
+    this.dbClient = dbClient;
+    logger.info(this.dbClient);
+    this.users = this.dbClient.collection<User>("users");
   }
 
   async createUser(user: User): Promise<User> {

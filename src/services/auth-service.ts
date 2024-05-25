@@ -1,7 +1,15 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
+import { UserRepository } from "@src/repository/user-repository";
+
 class AuthService {
+  userRepository: UserRepository;
+
+  constructor({ userRepository }: { userRepository: UserRepository }) {
+    this.userRepository = userRepository;
+  }
+
   async register(username: string, password: string): Promise<string> {
     const hashedPassword: string = await bcrypt.hash(password, 10);
     logger.info(`User with username ${username} ${hashedPassword} created`);

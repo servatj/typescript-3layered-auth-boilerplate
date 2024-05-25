@@ -8,6 +8,7 @@ export class CommonController {
       timestamp: Date.now(),
     };
     try {
+      logger.info("Health check request received");
       res.status(200).send(healthCheck);
     } catch (error) {
       if (error instanceof Error) {

@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import { CommonController } from "@src/controllers/common-controller";
 
-class CommonRoutes {
+export class CommonRoutes {
   private router: Router;
   private controller: CommonController = new CommonController();
 
@@ -13,6 +13,7 @@ class CommonRoutes {
 
   private init() {
     this.router.get("/health", (req, res) => {
+      console.log("Health check", req, res);
       this.controller.health(req, res);
     });
   }

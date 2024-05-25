@@ -1,14 +1,42 @@
 import express from "express";
 
 import errorMiddleware from "./middleware/error-middleware";
-import { authRoutes } from "./routes/auth-routes";
-import { commonRoutes } from "./routes/common-routes";
+import { AuthRoutes } from "./routes/auth-routes";
+import { CommonRoutes } from "./routes/common-routes";
 
-const app = express();
+export class App {
+  private readonly app = express();
+  authRoutes: AuthRoutes;
+  commonRoutes: CommonRoutes;
 
-app.use(express.json());
-app.use(commonRoutes.getRouter());
-app.use(authRoutes.getRouter());
-app.use(errorMiddleware);
+  constructor({
+    authRoutes,
+    commonRoutes,
+  }: {
+    authRoutes: AuthRoutes;
+    commonRoutes: CommonRoutes;
+  }) {
+    this.authRoutes = authRoutes;
+    this.commonRoutes = commonRoutes;
+    this.initializeMiddlewares();
+    this.initializeRoutes();
+    this.initializeErrorHandling();
+  }
 
-export default app;
+  private initializeMiddlewares() {
+    this.app.use(express.json());
+  }
+
+  private initializeRoutes() {
+    this.app.use(this.commonRoutes.getRouter().bind(this.commonRoutes));
+    this.app.use(this.authRoutes.getRouter());
+  }
+
+  private initializeErrorHandling() {
+    this.app.use(errorMiddleware);
+  }
+
+  getApp() {
+    return this.app;
+  }
+}

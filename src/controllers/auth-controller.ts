@@ -6,7 +6,7 @@ import { userSchema } from "@src/validators/user-schema";
 export class AuthController {
   authService: AuthService;
 
-  constructor(authService: AuthService) {
+  constructor({ authService }: { authService: AuthService }) {
     this.authService = authService;
   }
 
