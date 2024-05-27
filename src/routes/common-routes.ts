@@ -13,7 +13,7 @@ export class CommonRoutes {
 
   private init() {
     this.router.get("/health", (req, res) => {
-      console.log("Health check", req, res);
+      // console.log("Health check", req, res);
       this.controller.health(req, res);
     });
   }

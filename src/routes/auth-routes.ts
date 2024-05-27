@@ -18,6 +18,7 @@ export class AuthRoutes {
     // eslint-disable-next-line @typescript-eslint/no-misused-promises, @typescript-eslint/unbound-method
     this.router.post(
       "/register",
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
       this.controller.register.bind(this.controller),
     );
   }
