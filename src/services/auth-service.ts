@@ -38,17 +38,34 @@ class AuthService {
     }
   }
 
-  async login(username: string, password: string): Promise<string> {
-    const hashedPassword = await bcrypt.hash("your_password", 10);
-    const passwordIsValid = await bcrypt.compare(password, hashedPassword);
-    if (!passwordIsValid) {
-      throw new Error("Invalid username or password");
-    }
+  async login(
+    username: string,
+    email: string,
+    password: string,
+  ): Promise<string> {
+    try {
+      const user = await this.userRepository.getUserByEmail(email);
+      if (!user) {
+        throw new Error("Invalid username or password");
+      }
 
-    const token = jwt.sign({ username }, "your_secret_key", {
-      expiresIn: "1h",
-    });
-    return token; // Return the JWT token
+      const passwordIsValid = await bcrypt.compare(password, user.password);
+      if (!passwordIsValid) {
+        throw new Error("Invalid username or password");
+      }
+      const token = jwt.sign({ username }, "your_secret_key", {
+        expiresIn: "1h",
+      });
+
+      return token; // Return the JWT token
+    } catch (error) {
+      logger.error(error);
+      const error_ =
+        error instanceof Error
+          ? new Error(error.message)
+          : new Error("An unexpected error occurred");
+      throw error_;
+    }
   }
 }
 
