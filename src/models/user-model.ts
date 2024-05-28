@@ -6,7 +6,7 @@ export type User = {
   password: string;
 };
 
-export const userCreateDTO = (user: User) => {
+export const userCreateDTO = (user: User): User => {
   return {
     id: user.id,
     name: user.name,

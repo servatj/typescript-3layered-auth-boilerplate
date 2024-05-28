@@ -10,10 +10,32 @@ class AuthService {
     this.userRepository = userRepository;
   }
 
-  async register(username: string, password: string): Promise<string> {
-    const hashedPassword: string = await bcrypt.hash(password, 10);
-    logger.info(`User with username ${username} ${hashedPassword} created`);
-    return "User created successfully";
+  async register({
+    name,
+    email,
+    password,
+  }: {
+    name: string;
+    email: string;
+    password: string;
+  }): Promise<string> {
+    try {
+      const user = await this.userRepository.getUserByEmail(email);
+      if (user) {
+        throw new Error("User already exists");
+      }
+      const hashedPassword: string = await bcrypt.hash(password, 10);
+      logger.info(`User with username ${name} ${hashedPassword} created`);
+      await this.userRepository.createUser(name, email, hashedPassword);
+      return "User created successfully";
+    } catch (error) {
+      logger.error(error);
+      const error_ =
+        error instanceof Error
+          ? new Error(error.message)
+          : new Error("An unexpected error occurred");
+      throw error_;
+    }
   }
 
   async login(username: string, password: string): Promise<string> {

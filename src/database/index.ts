@@ -1,4 +1,4 @@
-import { Db, MongoClient, MongoClientOptions, ServerApiVersion } from "mongodb";
+import { Db, MongoClient, MongoClientOptions } from "mongodb";
 
 let db: Db;
 
@@ -11,22 +11,14 @@ export class DbClient {
     if (!DbClient.instance) {
       DbClient.instance = new DbClient();
     }
-
     return DbClient.instance;
   }
 
   public async connectDB(): Promise<Db> {
     try {
-      const uri: string = process.env.MONGO_URI || "mongodb://localhost:27017";
+      const uri: string = "mongodb://root:root@localhost:27017";
       const dbName: string = process.env.MONGO_DB_NAME || "testUserDB";
-
-      const options: MongoClientOptions = {
-        serverApi: {
-          version: ServerApiVersion.v1,
-          strict: true,
-          deprecationErrors: true,
-        },
-      };
+      const options: MongoClientOptions = {};
       const client: MongoClient = new MongoClient(uri, options);
       await client.connect();
       db = client.db(dbName);
