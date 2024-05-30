@@ -1,3 +1,4 @@
+import cors from "cors";
 import express from "express";
 
 import errorMiddleware from "./middleware/error-middleware";
@@ -25,6 +26,8 @@ export class App {
 
   private initializeMiddlewares() {
     this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(cors());
   }
 
   private initializeRoutes() {

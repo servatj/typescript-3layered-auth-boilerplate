@@ -53,9 +53,13 @@ class AuthService {
       if (!passwordIsValid) {
         throw new Error("Invalid username or password");
       }
-      const token = jwt.sign({ username }, "your_secret_key", {
-        expiresIn: "1h",
-      });
+      const token = jwt.sign(
+        { username },
+        process.env.ACCESS_TOKEN_PRIVATE_KEY || "secret",
+        {
+          expiresIn: "1h",
+        },
+      );
 
       return token; // Return the JWT token
     } catch (error) {
