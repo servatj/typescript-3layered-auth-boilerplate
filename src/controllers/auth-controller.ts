@@ -18,7 +18,6 @@ export class AuthController {
     } catch (error) {
       if (error instanceof Error) {
         res.status(400).json({ error: error.message });
-        return;
       }
     }
   }
@@ -35,7 +34,6 @@ export class AuthController {
     } catch (error) {
       if (error instanceof Error) {
         res.status(500).json({ error: `Internal server error` });
-        return;
       }
     }
   }

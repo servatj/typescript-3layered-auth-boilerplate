@@ -12,6 +12,11 @@ export const createVitestTestConfig = (testingType: string): InlineConfig => {
     include: [`tests/${testingType}/**/*.test.ts`],
     exclude: [...configDefaults.exclude, "node_modules"],
     env: loadEnv("test", process.cwd(), ""),
+    poolOptions: {
+      forks: {
+        singleFork: true,
+      },
+    },
     coverage: {
       provider: "v8",
       reporter: ["text", "json", "html"],
