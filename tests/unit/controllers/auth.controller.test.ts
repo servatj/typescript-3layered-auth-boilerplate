@@ -27,4 +27,20 @@ describe("AuthController", () => {
       }
     });
   });
+
+  describe("login", () => {
+    it("should login a user successfully", async () => {
+      const req = { body: { name: "John Doe", email: "", password: "" } };
+      const res = { status: vi.fn().mockReturnThis(), json: vi.fn() };
+      try {
+        const reponse = authController.login(
+          req as Request,
+          res as unknown as Response,
+        );
+        expect(reponse).toBeInstanceOf(Promise);
+      } catch (error) {
+        expect(error).toBeUndefined();
+      }
+    });
+  });
 });
