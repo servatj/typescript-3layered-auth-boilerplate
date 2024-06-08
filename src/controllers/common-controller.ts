@@ -13,8 +13,8 @@ export class CommonController {
     } catch (error) {
       if (error instanceof Error) {
         healthCheck.message = `${error.message}`;
+        res.status(503).send();
       }
-      res.status(503).send();
     }
   }
 }
