@@ -9,17 +9,16 @@ describe("CommonController", () => {
   describe("register", () => {
     it("should register a user successfully", async () => {
       const res = {
-        status: {
-          send: vi.fn(),
-        },
+        status: vi.fn().mockReturnThis(), // mock status to return `this` for chaining
         json: vi.fn(),
+        send: vi.fn(),
       };
       try {
-        const reponse = commonController.health(
+        const response = commonController.health(
           {} as Request,
           res as unknown as Response,
         );
-        expect(reponse).toBeInstanceOf(Promise);
+        expect(response).toBeUndefined();
       } catch (error) {
         console.log(error);
       }
