@@ -1,4 +1,8 @@
-import "@src/config/load-env-vars";
+// eslint-disable-next-line unicorn/import-style
+import * as path from "node:path";
+
+import { config } from "dotenv";
+config({ path: path.resolve(__dirname, "../.env") });
 
 import configureContainer from "./container";
 import { Server } from "./server";

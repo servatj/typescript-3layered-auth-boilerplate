@@ -4,8 +4,6 @@ import http from "node:http";
 
 import { Express } from "express";
 
-import { config } from "@src/config/config";
-
 import { App } from "./app";
 export class Server {
   private readonly app: Express;
@@ -14,7 +12,7 @@ export class Server {
 
   constructor({ app }: { app: App }) {
     this.app = app.getApp();
-    this.port = Number(config.server.port);
+    this.port = Number(process.env.PORT || 3000);
   }
 
   async start(): Promise<void> {

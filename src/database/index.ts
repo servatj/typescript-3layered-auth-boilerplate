@@ -16,8 +16,9 @@ export class DbClient {
 
   public async connectDB(): Promise<Db> {
     try {
-      const uri: string = "mongodb://root:root@localhost:27017";
+      const uri: string = process.env.MONGO_URI || "mongodb://localhost:27017";
       const dbName: string = process.env.MONGO_DB_NAME || "testUserDB";
+      logger.info("uri" + dbName);
       const options: MongoClientOptions = {};
       const client: MongoClient = new MongoClient(uri, options);
       await client.connect();

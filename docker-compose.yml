@@ -2,14 +2,27 @@ version: "3.8"
 
 services:
   auth-service:
-    container_name: my-service
+    container_name: auth-service
     build:
       target: production
       context: .
-      args:
-        - PORT=${PORT:-3000}
     ports:
-      - "${PORT:-3000}:${PORT:-3000}"
+      - "4000:4000"
+    volumes:
+      - .:/app
+    depends_on:
+      - mongo
+    environment:
+      - PORT=${PORT}
+      - MONGO_URI=${MONGO_URI}
+      - MONGO_DB_NAME=${MONGO_DB_NAME}
+      - ACCESS_TOKEN_PRIVATE_KEY=${ACCESS_TOKEN_PRIVATE_KEY}
+      - ACCESS_TOKEN_PUBLIC_KEY=${ACCESS_TOKEN_PUBLIC_KEY}
+      - REFRESH_TOKEN_PRIVATE_KEY=${REFRESH_TOKEN_PRIVATE_KEY}
+      - REFRESH_TOKEN_PUBLIC_KEY=${REFRESH_TOKEN_PUBLIC_KEY}
+
+    command: /bin/sh -c "mkdir -p /app/logs && chown -R node:node /app/logs && npm start"
+
     deploy:
       resources:
         limits:
