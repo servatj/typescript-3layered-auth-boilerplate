@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 
+import { ErrorCodes } from "@src/models/error-codes";
 import AuthService from "@src/services/auth-service";
 import { userSchema } from "@src/validators/user-schema";
 
@@ -17,6 +18,9 @@ export class AuthController {
       res.status(200).json({ message: "User registered successfully" });
     } catch (error) {
       if (error instanceof Error) {
+        if (error.message === ErrorCodes.USER_ALREADY_EXISTS.message) {
+          res.status(409).json({ status: 409, error: error.message });
+        }
         res.status(400).json({ error: error.message });
       }
     }

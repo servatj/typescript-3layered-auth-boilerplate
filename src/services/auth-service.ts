@@ -3,6 +3,8 @@ import jwt from "jsonwebtoken";
 
 import { UserRepository } from "@src/repository/user-repository";
 
+import { ErrorCodes } from "../models/error-codes";
+
 class AuthService {
   userRepository: UserRepository;
 
@@ -22,7 +24,7 @@ class AuthService {
     try {
       const user = await this.userRepository.getUserByEmail(email);
       if (user) {
-        throw new Error("User already exists");
+        throw new Error(ErrorCodes.USER_ALREADY_EXISTS.code);
       }
       const hashedPassword: string = await bcrypt.hash(password, 10);
       logger.info(`User with username ${name} ${hashedPassword} created`);

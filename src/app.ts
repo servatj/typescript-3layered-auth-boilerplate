@@ -32,7 +32,7 @@ export class App {
 
   private initializeRoutes() {
     this.app.use(this.commonRoutes.getRouter().bind(this.commonRoutes));
-    this.app.use(this.authRoutes.getRouter());
+    this.app.use("/auth", this.authRoutes.getRouter());
   }
 
   private initializeErrorHandling() {
