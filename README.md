@@ -1,24 +1,28 @@
 <p align="center">
-  <a href="https://expressjs.com/" target="blank"><img src="docs/images/boilerplate.png" alt="Express Logo" width="512" /></a>
+  <a href="https://expressjs.com/" target="blank"><img src="https://files.oaiusercontent.com/file-NVQlujpB7qPP1pJwaN6ecV13?se=2024-06-18T17%3A56%3A31Z&sp=r&sv=2023-11-03&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3D90d1b0c9-9174-4fc4-aee2-7191be8642c0.webp&sig=y3jrkrn1pACYPvFI27bV14lKrgZ5w9U9f1U6i9LTLLs%3D" alt="Express Logo" width="512" /></a>
 </p>
 
 <h1 align="center">⭐ Express Typescript 3 layered boilerplate ⭐</h1>
 
-<p align="center">
-  Very basic NodeJS using Express and Typescript template, especially focused on providing a good starting point with all the tooling neede as code quality, bundle, lint, test etc... 🚀
-</p>
+## 🏗 Architecture
 
-<p align="center">
-  <a href="https://github.com/servatj/typescript-basic-express-boilerplate/actions/workflows/node.yml?branch=main"><img src="https://github.com/servatj/typescript-basic-express-boilerplate/actions/workflows/node.yml/badge.svg?branch=main" alt="nodejs"/></a>
-  <a href="https://nodejs.org/docs/latest-v20.x/api/index.html"><img src="https://img.shields.io/badge/node-20.x-green.svg" alt="node"/></a>
-  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/typescript-5.x-blue.svg" alt="typescript"/></a>
-  <a href="https://www.npmjs.com/"><img src="https://img.shields.io/badge/npm-10.x-red.svg" alt="npm"/></a>
-  <a href="https://swc.rs/"><img src="https://img.shields.io/badge/Compiler-SWC_-orange.svg" alt="swc"/></a>
-  <a href="https://vitest.dev/"><img src="https://img.shields.io/badge/Test-Vitest_-yellow.svg" alt="swc"/></a>
-  <a href="https://www.docker.com/"><img src="https://img.shields.io/badge/Dockerized 🐳_-blue.svg" alt="docker"/></a>
-</p>
+This boilerplate follows a 3-layered architecture consisting of:
+
+1. **Controllers**: Handle HTTP requests and responses.
+2. **Services**: Contain the business logic of the application.
+3. **Repositories**: Interact with the database.
 
 ## 📗 Features
+
+<p align="center">
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/typescript-5.x-blue.svg" alt="typescript" /></a>
+  <a href="https://nodejs.org/en/"><img src="https://img.shields.io/badge/node-20.x-green.svg" alt="node" /></a>
+  <a href="https://www.npmjs.com/"><img src="https://img.shields.io/badge/npm-10.x-red.svg" alt="npm" /></a>
+  <a href="https://swc.rs/"><img src="https://img.shields.io/badge/Compiler-SWC-orange.svg" alt="swc" /></a>
+  <a href="https://vitest.dev/"><img src="https://img.shields.io/badge/Test-Vitest-yellow.svg" alt="vitest" /></a>
+  <a href="https://www.docker.com/"><img src="https://img.shields.io/badge/Dockerized 🐳_-blue.svg" alt="docker"/></a>
+  <a href="https://playwright.dev/"><img src="https://img.shields.io/badge/Testing-Playwright-blue.svg" alt="playwright"/></a>
+</p>
 
 1. Typescript as main language. 🦄
 2. Fully dockerized service. 🐳
