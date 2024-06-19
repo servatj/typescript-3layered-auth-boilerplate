@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://expressjs.com/" target="blank"><img src="https://files.oaiusercontent.com/file-NVQlujpB7qPP1pJwaN6ecV13?se=2024-06-18T17%3A56%3A31Z&sp=r&sv=2023-11-03&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3D90d1b0c9-9174-4fc4-aee2-7191be8642c0.webp&sig=y3jrkrn1pACYPvFI27bV14lKrgZ5w9U9f1U6i9LTLLs%3D" alt="Express Logo" width="512" /></a>
+  <a href="https://expressjs.com/" target="blank"><img src="docs/images/boilerplate.png" alt="Express Logo" width="512" /></a>
 </p>
 
 <h1 align="center">⭐ Express Typescript 3 layered boilerplate ⭐</h1>
